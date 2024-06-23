@@ -24,6 +24,12 @@ export default defineNuxtConfig({
           content: 'width=device-width, initial-scale=1.0, user-scalable=no',
         },
       ],
+      script: [
+        {
+          src: 'https://accounts.google.com/gsi/client',
+          async: true,
+        },
+      ],
     },
   },
   css: [
@@ -32,13 +38,14 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: [
     '@nuxt/content',
+    '@nuxt/image',
+    '@nuxt/ui',
     [
       '@pinia/nuxt',
       {
         autoImports: ['defineStore'],
       },
     ],
-    '@nuxt/ui',
     'dayjs-nuxt',
   ],
   nitro: {
@@ -81,6 +88,8 @@ export default defineNuxtConfig({
       __AUTH0_CLIENT_ID__: JSON.stringify(process.env.AUTH0_CLIENT_ID),
       __REPO_URL__: JSON.stringify(repoUrl),
       __POST_ID_PREFIX__: JSON.stringify(process.env.POST_ID_PREFIX || ''),
+      __GOOGLE_CLIENT_ID__: JSON.stringify(process.env.GOOGLE_CLIENT_ID),
+      __AUTH_URI__: JSON.stringify(process.env.AUTH_URI),
     },
   },
   dayjs: {
